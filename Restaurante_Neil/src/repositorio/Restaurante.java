@@ -1,5 +1,7 @@
 package repositorio;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.TreeMap;
 
 import modelo.Conta;
 import modelo.Garcom;
@@ -8,7 +10,7 @@ import modelo.Produto;
 
 public class Restaurante {
 	private ArrayList<Produto> produtos = new ArrayList<>();
-	private ArrayList<Garcom> garcons = new ArrayList<>();
+	private TreeMap<String, Garcom> garcons = new TreeMap<>();
 	private ArrayList<Mesa> mesas = new ArrayList<>();
 	private ArrayList<Conta> contas = new ArrayList<>();
 
@@ -18,7 +20,7 @@ public class Restaurante {
 	}
 
 	public void adicionar (Garcom g) {
-		garcons.add(g);
+		garcons.put(g.getApelido(),g);
 	}
 
 	public void adicionar (Mesa t) {
@@ -34,7 +36,7 @@ public class Restaurante {
 	}
 
 	public void remover (Garcom g) {
-		garcons.add(g);
+		garcons.remove(g.getApelido(),g);
 	}
 
 	public void remover (Mesa t) {
@@ -54,7 +56,7 @@ public class Restaurante {
 	}
 
 	public Garcom localizarGarcom (String nickname) {
-		for (Garcom g: garcons) {
+		for (Garcom g: garcons.values()) {
 			if(g.getApelido().equalsIgnoreCase(nickname))
 				return g;
 		}
@@ -88,6 +90,7 @@ public class Restaurante {
 	}
 
 	public ArrayList<Produto> getProdutos() {
+		Collections.sort(produtos);
 		return produtos;
 	}
 
@@ -95,12 +98,8 @@ public class Restaurante {
 		this.produtos = produtos;
 	}
 
-	public ArrayList<Garcom> getGarcons() {
+	public TreeMap<String, Garcom> getGarcons() {
 		return garcons;
-	}
-
-	public void setGarcons(ArrayList<Garcom> garcons) {
-		this.garcons = garcons;
 	}
 
 	public ArrayList<Mesa> getMesas() {
@@ -117,8 +116,5 @@ public class Restaurante {
 
 	public void setContas(ArrayList<Conta> contas) {
 		this.contas = contas;
-	}
-	
-	
-	
+	}	
 }

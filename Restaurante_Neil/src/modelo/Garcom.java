@@ -1,7 +1,7 @@
 package modelo;
 import java.util.ArrayList;
 
-public class Garcom {
+public class Garcom implements Comparable<Garcom> {
 	private String apelido;
 	private ArrayList<Mesa> mesas = new ArrayList<>();
 	
@@ -55,6 +55,11 @@ public class Garcom {
 		}
 		texto+=" ]\n";
 		return texto;
+	}
+
+	@Override
+	public int compareTo(Garcom g1) {
+		return this.getApelido().compareToIgnoreCase(g1.getApelido());
 	}
 	
 }

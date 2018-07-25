@@ -7,6 +7,7 @@ public class Conta {
 	private double total;
 	private Mesa mesa;
 	private ArrayList<Produto> produtos = new ArrayList<>();
+	private Pagamento pagamento;
 	
 	public Conta(int numero) {
 		this.numero = numero;
@@ -71,15 +72,24 @@ public class Conta {
 		this.produtos = produtos;
 	}
 	
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
 	public String toString() {
 		String texto = "\n[ Conta [numero=" + numero + ", dtfechamento=" + dtfechamento + ", total=" + total + ", mesa=" + mesa+" Produtos: = [ ";
 		if(produtos.isEmpty()) {
 			texto+=" não tem produtos";
 		}else {
-			for(Produto p : produtos) {
+			for(Produto p : produtos) 
 				texto+=p+" ,";
-			}
 		}
+		if (this.getPagamento() != null)
+			texto += "Pagamento: " + this.getPagamento();
 		texto+=" ] ";
 		return texto;
 	}
