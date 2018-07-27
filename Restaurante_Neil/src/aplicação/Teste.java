@@ -1,5 +1,6 @@
 package aplicação;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import fachada.Fachada;
 import modelo.Produto;
@@ -36,7 +37,7 @@ public class Teste {
 			g = Fachada.cadastrarGarcom("esperto", 6,10);
 			g = Fachada.cadastrarGarcom("zezinho", 6,10);
 			g = Fachada.cadastrarGarcom("Chafundifórnio", 16,20);
-			ArrayList<Garcom> garcons = Fachada.listarGarcons();
+			TreeMap<String, Garcom> garcons = Fachada.listarGarcons();
 			
 
 		}catch (Exception e) {

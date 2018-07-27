@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -35,6 +35,9 @@ public class TelaPrincipal {
 	private JMenu menuMesa;
 	private JMenuItem itemListarM;
 	private JMenuItem itemSolicitarProd;
+	private JMenuItem itemPagarConta;
+	private JMenuItem itemExcluir;
+	private JMenuItem itemPercMed;
 
 
 	/**
@@ -187,6 +190,24 @@ public class TelaPrincipal {
 		});
 		menuGarcom.add(itemCalcularGorjeta);
 		
+		itemExcluir = new JMenuItem("Excluir");
+		itemExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaExcluirGarcom j = new TelaExcluirGarcom();
+				j.setVisible(true);
+			}
+		});
+		
+		menuGarcom.add(itemExcluir);
+		
+		itemPercMed = new JMenuItem("Perc Med");
+		itemPercMed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaMediaPercentual tm = new TelaMediaPercentual();
+				tm.setVisible(true);
+			}
+		});
+		menuGarcom.add(itemPercMed);
 		
 		JMenu mnConta = new JMenu("     Conta     ");
 		menuBar.add(mnConta); 
@@ -244,6 +265,16 @@ public class TelaPrincipal {
 			}
 		});
 		mnConta.add(mntmFecharConta);
+		
+
+		JMenuItem itemPagarConta = new JMenuItem("Pagar");
+		itemPagarConta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaPagamentoConta j = new TelaPagamentoConta();
+				j.setVisible(true);
+			}
+		});
+		mnConta.add(itemPagarConta);
 	
 	}
 }
