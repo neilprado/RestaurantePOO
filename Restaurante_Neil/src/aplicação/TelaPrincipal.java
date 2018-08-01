@@ -200,7 +200,7 @@ public class TelaPrincipal {
 		
 		menuGarcom.add(itemExcluir);
 		
-		itemPercMed = new JMenuItem("Perc Med");
+		itemPercMed = new JMenuItem("Percentual");
 		itemPercMed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TelaMediaPercentual tm = new TelaMediaPercentual();

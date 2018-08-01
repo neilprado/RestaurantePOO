@@ -194,7 +194,7 @@ public class Fachada {
 		return (gorjeta * 10)/100;
 	}
 	
-	public static Pagamento pagarConta(int id, String tipo, int quantidade, String card, int p) throws Exception {
+	public static Pagamento pagarConta(int id, String tipo, int p, String card, int quantidade) throws Exception {
 		Conta c = restaurante.localizarMesa(id).ultimaConta();	
 		if (!tipo.equalsIgnoreCase("Dinheiro") && !tipo.equalsIgnoreCase("Cartão"))
 			throw new Exception ("Tipo de pagamento inválido, tente novamente!");
@@ -208,9 +208,11 @@ public class Fachada {
 			c.setPagamento(p1);
 			return p1;			
 		}else if (tipo.equalsIgnoreCase("Cartão")) {
-			if (c.getTotal()/quantidade<100)
-				throw new Exception ("Valor da parcela inválida");
 			Pagamento p2 = new PagamentoCartao(c.getTotal(), card, quantidade);
+			if(quantidade > 1) {
+				if (c.getTotal()/quantidade<100)
+					throw new Exception ("Valor da parcela inválida");
+			}
 			p2.calcularPagamento(c.getTotal());
 			c.setPagamento(p2);
 			return p2;
